@@ -1,15 +1,28 @@
-import books from '../bookStore.json' with{type:"json"}
+import bookStore from '../bookStore.json' with{type:"json"}
+const booksShown = 5
+var booksStorage
+var maxPage
 var pagination = 1
 var bookId = 0
+
 load_page()
 function load_page(){
-    let books = load_5_books()
+    let books = load_books()
+    console.log(books);
+    
+    console.log(load_books());
     console.log(books); 
     fill_table(books)
 }
 
-function load_5_books(){
-    return books.books.splice((5*pagination)-1,5)
+function load_books(){
+    let books
+    localStorage.setItem('booksStorage', JSON.stringify(bookStore.books))
+    booksStorage = JSON.parse(localStorage.getItem('booksStorage')||'[]')
+    maxPage = booksStorage.length/booksShown
+    console.log(booksStorage);
+    
+    return booksStorage.splice((booksShown*(pagination-1)),booksShown)
 }
 
 function fill_table(books){
@@ -36,7 +49,7 @@ function fill_table(books){
         //price
         td = tr.querySelector('#column-price-')
         td.id = 'column-price-'+i
-        td.textContent = books[i].price
+        td.textContent = books[i].price+'$'
 
         //action buttons
         //read
@@ -54,7 +67,10 @@ function fill_table(books){
         btn.id = 'action-delete-'+i
         btn.onclick = delete_book(i)
         
-                
+        //choose the book
+        tr.addEventListener('click', ()=>{
+            show_book_details(books[i])
+        })   
         //append row to table
         tbody.appendChild(tr)
 
@@ -71,4 +87,27 @@ function update_book(bookId){
 
 function delete_book(bookId){
 
+}
+
+function show_book_details(book){
+    //title
+    document.getElementById('bookTitle').innerText = book.title
+
+    //show img
+    document.getElementById('bookImg').src = book.image
+    console.log(book.img);
+    
+    //price
+    document.getElementById('price').innerText = book.price
+
+    //rate
+    document.getElementById('rateInput').value = book.rate
+}
+
+function paging(count){
+    pagination+=(count+pagination<1)?1:(count+pagination>maxPage)?maxPage:count+pagination
+    page_numbers = document.getElementsByClassName('page-num')
+    for(let i in page_numbers){
+        pag
+    }
 }

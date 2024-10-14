@@ -24,8 +24,7 @@
       </div>
     </header>
     <div class="container">
-      
-      <div id="bookDetails">
+      <div id="booksAria">
         <table class="table table-dark table-striped-columns">
           <thead class="table-secondary">
             <tr class="table-secondary">
@@ -48,8 +47,17 @@
             </tr>
           </tbody>
         </table>
+        <nav>
+          <ul class="pagination">
+            <li id="prevPages" class="btn btn-dark" onclick="paging(-1)">Previous</li>
+            <li id="page1" class="btn btn-dark page-num"></li>
+            <li id="page2" class="btn btn-dark page-num"></li>
+            <li id="page3"class="btn btn-dark page-num"></li>
+            <li id="nextPages" class="btn btn-dark" onclick="paging(1)">Next</li>
+          </ul>
+        </nav>
       </div>
-      <div id="booksAria">
+      <div id="bookDetails">
         <p id="bookTitle" class="h2"></p>
         <img id="bookImg" />
         <div id="details">
@@ -59,7 +67,7 @@
           </div>
           <div>
             <label>Rate: </label>
-            <input type="number" class="form-control" id="numberInput" />
+            <input type="number" class="form-control" id="rateInput" />
           </div>
         </div>
       </div>

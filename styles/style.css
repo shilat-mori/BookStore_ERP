@@ -9,20 +9,27 @@
   flex-direction: row;
 }
 
-#row-{
+img {
+  width: 100%;
+}
+
+#row- {
   display: none;
 }
 
-#booksAria {
+#bookDetails {
   width: 30%;
   padding: 10px;
   background-color: #f0bdff;
 }
 
-#bookDetails {
+#booksAria {
   width: 70%;
   padding: 10px;
   background-color: #f0bdff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 table {
