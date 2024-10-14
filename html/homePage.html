@@ -17,7 +17,7 @@
     <header>
       <h1 class="bg-tertiary">Book Store ERP</h1>
       <div id="control" class="bg-dark">
-        <button class="btn btn-dark">+ New book</button>
+        <button id="bookAdding" class="btn btn-dark">+ New book</button>
         <div>
           <button class="btn btn-dark">Load data</button>
           <select>
@@ -72,12 +72,13 @@
         </nav>
       </div>
       <div id="bookDetails">
-        <p id="bookTitle" class="h2"></p>
-        <img id="bookImg" />
+        
         <div id="details">
+          <p id="bookTitle" class="h2"></p>
+        <img id="bookImg" />
           <div>
             <label>Price: </label>
-            <label id="price"></label>
+            <label id="bookPrice"></label>
           </div>
           <div>
             <label>Rate: </label>
@@ -87,6 +88,23 @@
       </div>
     </div>
     <footer></footer>
-    <script type="module" src="../code/bookStore.js"></script>
+    <div id="bookForm" class="modal">
+      <div class="modal-content">
+          <button id="closeForm" class="btn ntn-dark">&times;</button>
+          <h2 id="actionMessage"></h2>
+          <form id="detailsForm">
+              <label for="title">Title: </label><br>
+              <input type="text" id="title" name="title" required><br><br>
+              <label for="price">Price: </label><br>
+              <input type="number" id="price" name="price" required><br><br>
+              <label for="image">Image URL: </label><br>
+              <input type="url" id="image" name="image"><br><br>
+              <button class="btn btn-dark" type="submit">Submit</button>
+          </form>
+      </div>
+  </div>
   </body>
+
+  
+<script type="module" src="../code/bookStore.js" defer></script>
 </html>

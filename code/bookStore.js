@@ -5,6 +5,7 @@ var maxPage
 var pagination = 1
 var bookId = 0
 var paging_range = [1,2,3]
+var add_update = 1
 
 loading_data()
 
@@ -16,9 +17,9 @@ function loading_data(){
 }
 
 function load_books(){
-    localStorage.setItem('booksStorage', JSON.stringify(bookStore.books))
-    booksStorage = JSON.parse(localStorage.getItem('booksStorage')||'[]')   
-    maxPage = booksStorage.length/booksShown    
+    // localStorage.setItem('booksStorage', JSON.stringify(bookStore.books))
+    booksStorage = JSON.parse(localStorage.getItem('booksStorage'))      
+    maxPage = Math.ceil(booksStorage.length/booksShown)
 }
 
 function fill_table(){
@@ -32,7 +33,11 @@ function fill_table(){
    
     //multiple the first row model and fill it
     row = document.getElementById('row-')
-    booksToFill = booksStorage.slice((booksShown*(pagination-1)),(booksShown*(pagination-1))+booksShown)
+    let start,end
+    start = (booksShown*(pagination-1))
+    end = (((booksShown*(pagination-1))+booksShown)>=booksStorage.length)?booksStorage.length:(booksShown*(pagination-1)+booksShown)
+    booksToFill = booksStorage.slice(start,end)
+    console.log(start, end);
     
     for(let i in booksToFill){
         //multiple the node including its innerHTML nodes
@@ -60,38 +65,59 @@ function fill_table(){
         //read
         btn = tr.querySelector('#action-read-')
         btn.id = 'action-read-'+i
-        btn.onclick = read_book(i)
+        btn.addEventListener('click', ()=>{read_book(booksToFill[i])})
 
         //update
         btn = tr.querySelector('#action-update-')
         btn.id = 'action-update-'+i
-        btn.onclick = update_book(i)
+        btn.addEventListener('click',()=>{
+            document.getElementById('bookForm').style.display = 'flex';
+            update_book(booksToFill[i])
+        })
 
         //delete
         btn = tr.querySelector('#action-delete-')
         btn.id = 'action-delete-'+i
-        btn.onclick = delete_book(i)
-        
+        btn.addEventListener('click',()=>{
+            delete_book(booksToFill[i].id)
+        })
         //choose the book
         tr.addEventListener('click', ()=>{
-            show_book_details(booksToFill[i])
-        })   
+            // show_book_details(booksToFill[i])
+        })
+
         //append row to table
         tbody.appendChild(tr)
 
     }
 }
 
-function read_book(bookId){
-
+function create_book(){
+    document.getElementById('bookForm').style.display = 'flex';
+    add_update = 1
+    loading_data()
 }
 
-function update_book(bookId){
-
+function read_book(book){
+    bookId = book.id
+    document.getElementById('details').style.display = 'flex'
+    show_book_details(book)
 }
 
-function delete_book(bookId){
+function update_book(book){
+    document.getElementById('title').value = book.title
+    document.getElementById('price').value = book.price
+    document.getElementById('image').value = book.image
+    add_update = 0
+    bookId = book.id
+}
 
+function delete_book(id){
+    let index = booksStorage.findIndex(item => (item.id==id))
+    if(index == -1) return
+    booksStorage.splice(index, 1)
+    localStorage.setItem('booksStorage',JSON.stringify(booksStorage))
+    loading_data()
 }
 
 function show_book_details(book){
@@ -100,10 +126,10 @@ function show_book_details(book){
 
     //show img
     document.getElementById('bookImg').src = book.image
-    console.log(book.img);
+    console.log(book.image);
     
     //price
-    document.getElementById('price').innerText = book.price
+    document.getElementById('bookPrice').innerText = book.price
 
     //rate
     document.getElementById('rateInput').value = book.rate
@@ -115,6 +141,7 @@ function paging(count){
 
     //remove the style from last paging
     indexPage = paging_range.indexOf(pagination)
+    console.log(maxPage,pagination,indexPage, paging_range);
     
     page_numbers[indexPage].classList.add('btn-dark')
     page_numbers[indexPage].classList.remove('btn-light')
@@ -150,12 +177,60 @@ function paging(count){
         page_numbers[indexPage].classList.remove('btn-dark')
         page_numbers[indexPage].classList.add('btn-light')
     }
-
+    document.getElementById('details').style.display = 'none'
     fill_table()
- }
+}
 
- function eventListenersSetting(){
+function eventListenersSetting(){
     document.getElementById('prevPages').addEventListener('click', ()=>{paging(-1)});
     document.getElementById('nextPages').addEventListener('click', ()=>{paging(1)});
+    document.getElementById('bookAdding').addEventListener('click',()=>{create_book()});
+    document.getElementById('closeForm').addEventListener('click',()=>{
+        document.getElementById('bookForm').style.display = 'none';
+    })
+    document.getElementById('detailsForm').addEventListener('submit',()=>{UpdateData()});
+    document.getElementById('rateInput').addEventListener('change', ()=>{change_rate()})
  }
 
+ function UpdateData(){
+    let newBook, bookIndex
+    if([0,1].includes(add_update)){
+        booksStorage = JSON.parse(localStorage.getItem('booksStorage'))
+            newBook = {
+                id: (booksStorage[booksStorage.length - 1].id+1),
+                title: document.getElementById('title').value,
+                price: parseInt(document.getElementById('price').value!=NaN?document.getElementById('price').value:0),
+                image: document.getElementById('image').value,
+                rate: 0
+            }
+    }
+    switch(add_update){
+        //adding book
+        case 1:{
+            booksStorage.push(newBook)
+            localStorage.setItem('booksStorage',JSON.stringify(booksStorage))
+            booksStorage = JSON.parse(localStorage.getItem('booksStorage'))  
+            console.log(booksStorage);
+            break
+        }
+        //updating book
+        case 0:{
+            bookIndex = booksStorage.findIndex(item=>item.id == bookId)            
+            newBook.rate = booksStorage[bookIndex].rate
+            booksStorage[bookIndex] = newBook
+            localStorage.setItem('booksStorage',JSON.stringify(booksStorage))
+            booksStorage = JSON.parse(localStorage.getItem('booksStorage'))  
+            break
+        }
+        default:{
+
+        }
+        // loading_data()
+    }
+}
+
+function change_rate(){
+    let bookIndex = booksStorage.findIndex(item=>item.id == bookId)            
+    booksStorage[bookIndex].rate = parseInt(document.getElementById('rateInput').value!=NaN?document.getElementById('rateInput').value:0)
+    localStorage.setItem('booksStorage',JSON.stringify(booksStorage))
+}
