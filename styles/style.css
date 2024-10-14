@@ -1,0 +1,35 @@
+#control {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+#row-{
+  display: none;
+}
+
+#booksAria {
+  width: 30%;
+  padding: 10px;
+  background-color: #f0bdff;
+}
+
+#bookDetails {
+  width: 70%;
+  padding: 10px;
+  background-color: #f0bdff;
+}
+
+table {
+  color: black;
+}
+
+.action {
+  display: flex;
+  justify-content: space-between;
+}

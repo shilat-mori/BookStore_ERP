@@ -1,0 +1,125 @@
+{
+    "books": [
+      {
+        "id": 1,
+        "title": "הארי פוטר ואבן החכמים",
+        "price": 89.90,
+        "image": "https://images.unsplash.com/photo-1600189261867-30e5ffe7b8da?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGhhcmklMjBwb3R0ZXJ8ZW58MHx8MHx8fDA%3D"
+      },
+      {
+        "id": 2,
+        "title": "כשהיהתי קטן",
+        "price": 59.90,
+        "image": "https://media.istockphoto.com/id/1071655316/photo/surreal-moment-of-a-woman-relaxes-sitting-on-a-giant-book.webp?a=1&b=1&s=612x612&w=0&k=20&c=ny2a0Kd_9CHhRIhfF6UI2Arw9RO8MGNrK9URC0NqORs="
+      },
+      {
+        "id": 3,
+        "title": "המדריך לגלקסיה",
+        "price": 75.00,
+        "image": "https://images.unsplash.com/photo-1510828631147-95ab1bd423af?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z2FsbGF4eSUyMGd1aWRlfGVufDB8fDB8fHww"
+      },
+      {
+        "id": 4,
+        "title": "הזמן היקר שלי",
+        "price": 49.90,
+        "image": "https://media.istockphoto.com/id/850948192/photo/stopwatch.webp?a=1&b=1&s=612x612&w=0&k=20&c=_Rexf7_724rRC9Nvm20Xa63y2bDfV8FtcGLIrpbsUyQ="
+      },
+      {
+        "id": 5,
+        "title": "האדון וגביר",
+        "price": 45.00,
+        "image": "https://images.unsplash.com/photo-1527669413070-923b3882af25?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8TXJ8ZW58MHx8MHx8fDA%3D"
+      },
+      {
+        "id": 6,
+        "title": "שיחות עם ה'",
+        "price": 99.00,
+        "image": "https://media.istockphoto.com/id/1768880576/photo/holding-tzitzit-around-the-hand-during-jewish-prayer.webp?a=1&b=1&s=612x612&w=0&k=20&c=yatUYug_z4ul1e4ar7dLZE-uYDnUUohPzsB0OG85d6w="
+      },
+      {
+        "id": 7,
+        "title": "עולם הפרפרים",
+        "price": 65.50,
+        "image": "https://media.istockphoto.com/id/1432577634/photo/beautiful-monarch-butterfly-isolated-on-white.webp?a=1&b=1&s=612x612&w=0&k=20&c=5YyQ57xmB9Gq-hcQ3Z46KGnT2EOBCwfYReVmOy1pk_I="
+      },
+      {
+        "id": 8,
+        "title": "בת הים הקטנה",
+        "price": 39.90,
+        "image": "https://media.istockphoto.com/id/486441993/photo/shes-focused-on-those-fish.webp?a=1&b=1&s=612x612&w=0&k=20&c=TAAXG4aLMEAPPcqJDiMzopFzd8rHTCsWSB59ZzgplM4="
+      },
+      {
+        "id": 9,
+        "title": "העולם הזה",
+        "price": 55.00,
+        "image": "https://media.istockphoto.com/id/175491132/photo/floating-globe-focused-on-the-atlantic-ocean.webp?a=1&b=1&s=612x612&w=0&k=20&c=kv5iCzV-ePRaQC5Pg183Gcdzx0pGsLYdir6C2ZOZdB8="
+      },
+      {
+        "id": 10,
+        "title": "אוליבר טוויסט",
+        "price": 78.00,
+        "image": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 11,
+        "title": "הקיץ של אביה",
+        "price": 44.90,
+        "image": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 12,
+        "title": "הפרשן",
+        "price": 72.00,
+        "image": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 13,
+        "title": "בין השורות",
+        "price": 58.00,
+        "image": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 14,
+        "title": "הנחשים",
+        "price": 66.90,
+        "image": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 15,
+        "title": "מעשה בחמישה בלונים",
+        "price": 32.50,
+        "image": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 16,
+        "title": "החתול במגפיים",
+        "price": 50.00,
+        "image": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 17,
+        "title": "הג'ונגל",
+        "price": 85.00,
+        "image": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 18,
+        "title": "בעקבות הזמן האבוד",
+        "price": 90.00,
+        "image": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 19,
+        "title": "המרדף אחרי האושר",
+        "price": 80.00,
+        "image": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 20,
+        "title": "המלך ואני",
+        "price": 47.00,
+        "image": "https://via.placeholder.com/150"
+      }
+    ]
+  }
+  
