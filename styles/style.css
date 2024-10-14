@@ -9,6 +9,14 @@
   flex-direction: row;
 }
 
+footer{
+  width: 100%;
+  text-align: center;
+  background-color: #f0bdff;
+  position: fixed;
+  bottom: 0px;
+}
+
 #details{
   display: flex;
   flex-direction: column;

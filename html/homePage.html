@@ -13,14 +13,14 @@
     <title>Document</title>
   </head>
   <!-- <body onload="load_page()"> -->
-  <body>
+  <body onload="loading_data()">
     <header>
       <h1 class="bg-tertiary">Book Store ERP</h1>
       <div id="control" class="bg-dark">
-        <button id="bookAdding" class="btn btn-dark">+ New book</button>
+        <button id="bookAdding" class="btn btn-dark" onclick="open_form()">+ New book</button>
         <div>
-          <button class="btn btn-dark">Load data</button>
-          <select>
+          <button class="btn btn-dark" onclick="loading_data()">Load data</button>
+          <select onchange="">
             <option>ENG</option>
             <option>HEB</option>
           </select>
@@ -33,8 +33,8 @@
           <thead class="table-secondary">
             <tr class="table-secondary">
               <td>Id</td>
-              <td>Title</td>
-              <td>Price</td>
+              <td id="title-td" onclick="orderStore('title')">Title</td>
+              <td id="price-td" onclick="orderStore('price')">Price</td>
               <td>Action</td>
             </tr>
           </thead>
@@ -57,15 +57,14 @@
         </table>
         <nav>
           <ul class="pagination">
-            <li id="prevPages" class="btn btn-dark">
-              <!-- onclick="paging(-1)"> -->
+            <li id="prevPages" class="btn btn-dark" onclick="paging(-1)">
+              
               Previous
             </li>
             <li id="page1" class="btn btn-dark page-num"></li>
             <li id="page2" class="btn btn-dark page-num"></li>
             <li id="page3" class="btn btn-dark page-num"></li>
-            <li id="nextPages" class="btn btn-dark">
-              <!--onclick="paging(1)">-->
+            <li id="nextPages" class="btn btn-dark" onclick="paging(1)">
               Next
             </li>
           </ul>
@@ -82,17 +81,17 @@
           </div>
           <div>
             <label>Rate: </label>
-            <input type="number" class="form-control" id="rateInput" />
+            <input type="number" class="form-control" id="rateInput" onchange="change_rate()"/>
           </div>
         </div>
       </div>
     </div>
-    <footer></footer>
+    <footer>Shilat Mori</footer>
     <div id="bookForm" class="modal">
       <div class="modal-content">
-          <button id="closeForm" class="btn ntn-dark">&times;</button>
+          <button id="closeForm" class="btn ntn-dark" onclick="close_form()">&times;</button>
           <h2 id="actionMessage"></h2>
-          <form id="detailsForm">
+          <form id="detailsForm" onsubmit="UpdateData()">
               <label for="title">Title: </label><br>
               <input type="text" id="title" name="title" required><br><br>
               <label for="price">Price: </label><br>
@@ -106,5 +105,5 @@
   </body>
 
   
-<script type="module" src="../code/bookStore.js" defer></script>
+<script src="../code/bookStore.js" defer></script>
 </html>
