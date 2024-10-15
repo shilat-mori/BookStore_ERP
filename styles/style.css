@@ -1,3 +1,8 @@
+/* global setting style */
+body {
+  padding: 0px;
+}
+
 #control {
   display: flex;
   flex-direction: row;
@@ -7,9 +12,11 @@
 .container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  padding: 0;
 }
 
-footer{
+footer {
   width: 100%;
   text-align: center;
   background-color: #f0bdff;
@@ -17,7 +24,8 @@ footer{
   bottom: 0px;
 }
 
-#details{
+#details {
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -54,10 +62,9 @@ table {
   justify-content: space-between;
 }
 
-
-/* the opem form style */
+/* the open form style */
 .modal {
-  display: none; 
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -87,4 +94,59 @@ table {
 .close:hover,
 .close:focus {
   color: black;
+}
+
+/* responsive settings */
+@media (min-width: 1000px) {
+  .container {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+@media (min-width: 450px) {
+  #bookDetails {
+    width: 70%;
+  }
+}
+
+@media (max-width: 450px) {
+  #booksAria {
+    width: 100%;
+  }
+
+  #bookDetails {
+    width: 100%;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .table-responsive button {
+    font-size: 8px;
+    padding: 2px;
+  }
+
+  .table-responsive td {
+    font-size: 8px;
+  }
+
+  .table-responsive th,
+  .table-responsive td {
+    max-width: 120px;
+    min-width: none;
+  }
+  .table-responsive thead td:last-child,
+  .table-responsive tbody td:nth-child(2),
+  .table-responsive tbody td:nth-child(4) {
+    width: 120px;
+  }
+
+  .table-responsive {
+    width: 380px;
+  }
+}
+
+@media (max-width: 360px) {
 }

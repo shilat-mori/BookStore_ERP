@@ -249,6 +249,7 @@ function close_form() {
 }
 
 function orderStore(type) {
+  //sort the bookStorage
   let arrow;
   booksStorage = JSON.parse(localStorage.getItem("booksStorage"));
   switch (type) {
