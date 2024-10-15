@@ -5,8 +5,8 @@ var pagination = 1;
 var bookId = 0;
 var paging_range = [1, 2, 3];
 var add_update = true;
-var sort_title = true
-var sort_price = true
+var sort_title = true;
+var sort_price = true;
 
 function loading_data() {
   load_books();
@@ -248,34 +248,34 @@ function close_form() {
   document.getElementById("bookForm").style.display = "none";
 }
 
-function orderStore(type){
-    let arrow
-    booksStorage = JSON.parse(localStorage.getItem("booksStorage"));
-    switch(type){
-        case 'title':{
-            booksStorage = sortByKey(booksStorage, 'title', sort_title)
-            sort_title = !sort_title
-            arrow = (sort_title)?'⬆':'⬇'
-            document.getElementById('title-td').innerHTML = ('Title '+ arrow)
-            break
-        }
-        case 'price':{
-            booksStorage = sortByKey(booksStorage, 'price', sort_price)
-            sort_price = !sort_price
-            arrow = (sort_title)?'⬆':'⬇'
-            document.getElementById('price-td').innerHTML = ('Price '+ arrow)
-            break
-        }
+function orderStore(type) {
+  let arrow;
+  booksStorage = JSON.parse(localStorage.getItem("booksStorage"));
+  switch (type) {
+    case "title": {
+      booksStorage = sortByKey(booksStorage, "title", sort_title);
+      sort_title = !sort_title;
+      arrow = sort_title ? "⬆" : "⬇";
+      document.getElementById("title-td").innerHTML = "Title " + arrow;
+      break;
     }
+    case "price": {
+      booksStorage = sortByKey(booksStorage, "price", sort_price);
+      sort_price = !sort_price;
+      arrow = sort_title ? "⬆" : "⬇";
+      document.getElementById("price-td").innerHTML = "Price " + arrow;
+      break;
+    }
+  }
 
-    localStorage.setItem("booksStorage", JSON.stringify(booksStorage));
-    fill_table()
+  localStorage.setItem("booksStorage", JSON.stringify(booksStorage));
+  fill_table();
 }
 
-function sortByKey(arr,key, ascending = true) {
-    return arr.sort((a, b) => {
-      if (a[key] < b[key]) return ascending ? -1 : 1;
-      if (a[key] > b[key]) return ascending ? 1 : -1;
-      return 0;
-    });
-  }
+function sortByKey(arr, key, ascending = true) {
+  return arr.sort((a, b) => {
+    if (a[key] < b[key]) return ascending ? -1 : 1;
+    if (a[key] > b[key]) return ascending ? 1 : -1;
+    return 0;
+  });
+}
